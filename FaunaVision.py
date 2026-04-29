@@ -1,0 +1,40 @@
+import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# 1. Load and Prepare Images
+train_ds = tf.keras.utils.image_dataset_from_directory(
+  'data',
+  validation_split=0.2, # Save 20% of images for a final "test"
+  subset="training",
+  seed=123,
+  image_size=(180, 180),
+  batch_size=32)
+
+val_ds = tf.keras.utils.image_dataset_from_directory(
+  'data',
+  validation_split=0.2,
+  subset="validation",
+  seed=123,
+  image_size=(180, 180),
+  batch_size=32)
+
+# 2. Build the Brain (Neural Network)
+model = models.Sequential([
+  layers.Rescaling(1./255, input_shape=(180, 180, 3)), # Shrink math numbers
+  layers.Conv2D(16, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),
+  layers.Flatten(),
+  layers.Dense(128, activation='relu'),
+  layers.Dense(3) # One for each animal
+])
+
+# 3. Compile and Train
+model.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              metrics=['accuracy'])
+
+model.fit(train_ds, validation_data=val_ds, epochs=10)
+model.save('fauna_model.h5')
+print("Model trained and saved!")
+
+

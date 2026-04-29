@@ -1,0 +1,12 @@
+# Ignore Virtual Environment
+venv/
+.venv/
+
+# Ignore Dataset Images
+data/
+
+# Ignore Python cache
+__pycache__/
+
+# Ignore Database files
+*.db
