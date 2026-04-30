@@ -25,9 +25,9 @@ def organize_images():
         # Check filename for keywords and move the file
         moved = False
         for category in categories:
+                shutil.move(file_path, dest_path)
             if category in filename.lower():
                 dest_path = os.path.join(source_folder, category, filename)
-                shutil.move(file_path, dest_path)
                 print(f"Moved {filename} -> {category}/")
                 moved = True
                 break
