@@ -1,8 +1,6 @@
 # 🐾 FaunaVision - Animal Detector
 
-Maine ek Deep Learning model banaya hai jo Jaguar, Macaw, aur Capybara ko pehchanta hai.
-
+"I have developed a Deep Learning model that identifies Jaguars, Macaws, and Capybaras."
 ### Project Result:
-Yahan mere model ka output screenshot hai:
-
+"Here is the output screenshot from my model:"
 ![Animal Detection Result](./result_1.png)
