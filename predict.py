@@ -1,21 +1,29 @@
-import tensorflow as tf
+import os
 import numpy as np
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.models import load_model
 
-# 1. Load the model you just trained
-model = tf.keras.models.load_model('fauna_model.h5')
+# Model load karein
+model = load_model('fauna_model.h5')
 
-# 2. Pick an image to test 
-# (Make sure 'test_animal.jpg' exists in your folder or use an image from 'data')
-img_path = "data/jaguar/taucan (1).jpeg"
+# Purani line: img_size = (224, 224)
+img_size = (180, 180) # Is nayi line se replace karein
+class_names = ['anaconda', 'capybara', 'golden_frog', 'jaguar', 'macaw', 'toucan']
+data_dir = 'data' 
 
-img = tf.keras.utils.load_img(img_path, target_size=(180, 180))
-img_array = tf.keras.utils.img_to_array(img)
-img_array = tf.expand_dims(img_array, 0)
+print(f"{'Animal Folder':<15} | {'Predicted':<15} | {'Confidence'}")
+print("-" * 50)
 
-# 3. Predict!
-predictions = model.predict(img_array)
-score = tf.nn.softmax(predictions[0])
-
-# 4. Show the result
-class_names = ['anaconda', 'capybara', 'golden froges', 'jaguar', 'macaw']
-print(f"This image most likely belongs to {class_names[np.argmax(score)]} with a {100 * np.max(score):.2f} percent confidence.")
+for folder in os.listdir(data_dir):
+    folder_path = os.path.join(data_dir, folder)
+    if os.path.isdir(folder_path):
+        # Folder ke andar ki images check karein
+        images = [f for f in os.listdir(folder_path) if f.endswith(('.jpeg', '.jpg', '.png'))]
+        if images:
+            img_path = os.path.join(folder_path, images[0])
+            img = image.load_img(img_path, target_size=img_size)
+            img_array = image.img_to_array(img) / 255.0
+            img_array = np.expand_dims(img_array, axis=0)
+            
+            preds = model.predict(img_array, verbose=0)
+            print(f"{folder:<15} | {class_names[np.argmax(preds)]:<15} | {np.max(preds)*100:.2f}%")
