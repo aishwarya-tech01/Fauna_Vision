@@ -25,13 +25,13 @@ model = models.Sequential([
   layers.MaxPooling2D(),
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
-  layers.Dense(5) # Five animals: Anaconda, Capybara, Golden Froges, Jaguar (with Toucan), and Macaw
+  layers.Dense(6, activation='softmax') # activation add karein
 ])
 
 # 3. Compile and Train
 model.compile(optimizer='adam',
-              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-              metrics=['accuracy'])
+loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False), # False karein             
+ metrics=['accuracy'])
 
 model.fit(train_ds, validation_data=val_ds, epochs=10)
 model.save('fauna_model.h5')
