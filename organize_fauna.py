@@ -26,7 +26,7 @@ def organize_images():
         moved = False
         for category in categories:
                 shutil.move(file_path, dest_path)
-            if category in filename.lower():
+        if category in filename.lower():
                 dest_path = os.path.join(source_folder, category, filename)
                 print(f"Moved {filename} -> {category}/")
                 moved = True

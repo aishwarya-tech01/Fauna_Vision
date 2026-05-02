@@ -25,7 +25,7 @@ model = models.Sequential([
   layers.MaxPooling2D(),
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
-  layers.Dense(3) # One for each animal
+  layers.Dense(5) # Five animals: Anaconda, Capybara, Golden Froges, Jaguar (with Toucan), and Macaw
 ])
 
 # 3. Compile and Train
