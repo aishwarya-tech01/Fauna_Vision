@@ -1,14 +1,15 @@
 import tensorflow as tf
 from tensorflow.keras import layers, models
-
 # 1. Load and Prepare Images
 train_ds = tf.keras.utils.image_dataset_from_directory(
   'data',
-  validation_split=0.2, # Save 20% of images for a final "test"
+  validation_split=0.2,
   subset="training",
   seed=123,
   image_size=(180, 180),
-  batch_size=32)
+  batch_size=32,
+  label_mode='int'
+  ) # <-- Ensure karein ye bracket band hai
 
 val_ds = tf.keras.utils.image_dataset_from_directory(
   'data',
@@ -16,8 +17,9 @@ val_ds = tf.keras.utils.image_dataset_from_directory(
   subset="validation",
   seed=123,
   image_size=(180, 180),
-  batch_size=32)
-
+  batch_size=32,
+  label_mode='int'
+  ) # <-- Ensure karein ye bracket band hai
 # 2. Build the Brain (Neural Network)
 model = models.Sequential([
   layers.Rescaling(1./255, input_shape=(180, 180, 3)),
