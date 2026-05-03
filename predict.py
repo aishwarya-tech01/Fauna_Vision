@@ -8,7 +8,8 @@ model = load_model('fauna_model.h5')
 
 # Purani line: img_size = (224, 224)
 img_size = (180, 180) # Is nayi line se replace karein
-class_names = ['anaconda', 'capybara', 'golden_frog', 'jaguar', 'macaw', 'toucan']
+# predict.py mein ise aise rakhein
+class_names = ['anaconda', 'capybara', 'golden frogs', 'jaguar', 'macaw', 'tucan']
 data_dir = 'data' 
 
 print(f"{'Animal Folder':<15} | {'Predicted':<15} | {'Confidence'}")
