@@ -14,8 +14,8 @@ Step 2: The "Brain" (Neural Network) ArchitectureYour code shows a specific stru
 <img width="489" height="311" alt="image" src="https://github.com/user-attachments/assets/ddb9f924-993b-4bee-b4cc-8757b0e20ffe" />
 
 Step 3: Tech Stack & Files
-List the technologies you used so others know what to install.
-- Language: Python
+List the technologies you used so others know what to install:
+- Language: Python.
 - Library: TensorFlow / Keras
 - Model Format: .h5 (Saved as fauna_model.h5)
 - Environment: Virtual Environment (venv) for clean package management.
