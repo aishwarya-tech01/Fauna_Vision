@@ -16,8 +16,8 @@ Step 2: The "Brain" (Neural Network) ArchitectureYour code shows a specific stru
 Step 3: Tech Stack & Files
 List the technologies you used so others know what to install:
 - Language: Python.
-- Library: TensorFlow / Keras
-- Model Format: .h5 (Saved as fauna_model.h5)
+- Library: TensorFlow / Keras.
+- Model Format: .h5 (Saved as fauna_model.h5) .
 - Environment: Virtual Environment (venv) for clean package management.
 
 Step 4: Project Structure
